@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
-import RibbonStart from './routes/RibbonStart';
-import Riddle from './routes/Riddle';
-import Gift from './routes/Gift';
+import RibbonContainer from './components/ribbonContainer/RibbonContainer';
+import Riddle from './components/riddleContainer/RiddleContainer';
+import Gift from './components/gift/Gift';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       {
         // TODO: make this path dynamic
         path: '/ribbons/tswift',
-        element: <RibbonStart />,
+        element: <RibbonContainer />,
       },
       {
         // TODO: make this path dynamic
