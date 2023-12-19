@@ -20,11 +20,6 @@ const router = createBrowserRouter([
         path: '/ribbons/tswift',
         element: <RibbonContainer />,
       },
-      {
-        // TODO: make this path dynamic
-        path: '/ribbons/tswift/gift',
-        element: <Gift />,
-      },
     ],
   },
 ]);

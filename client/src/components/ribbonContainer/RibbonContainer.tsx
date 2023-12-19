@@ -23,7 +23,7 @@ function RibbonContainer() {
         answer: 'Swift',
       },
     ],
-    gift: 'Gift',
+    gift: 'Gift section',
     currentStage: 0, //enum on the backend, 0 for photos, 1 for riddle, 2 for gift
   };
 
@@ -56,9 +56,8 @@ function RibbonContainer() {
     // TODO: add answer validation
     if (currentRiddleIndex < ribbonData.riddles.length - 1) {
       setcurrentRiddleIndex(currentRiddleIndex + 1);
-      console.log('setting new currentRiddleIndex');
     } else {
-      console.log('moving to gift section');
+      setCurrentStage(currentStage + 1);
     }
   }
 
@@ -77,7 +76,7 @@ function RibbonContainer() {
       case 1:
         return displayCurrentRiddle();
       case 2:
-      // return <Gift gift={ribbonData.gift} />;
+        return <div>{ribbonData.gift}</div>;
       default:
         return <div>Loading...</div>;
     }
