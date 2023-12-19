@@ -4,23 +4,43 @@ import { InputGroup } from 'react-bootstrap';
 
 // TODO: render the current question
 
-function Question(): JSX.Element {
+type QuestionProps = {
+  type: number;
+  question: string;
+  options: string[];
+  // TODO: refactor next button
+  answer: string;
+  setUserInput: React.Dispatch<React.SetStateAction<null>>;
+};
+
+function Question(props: QuestionProps): JSX.Element {
+  const { type, question, options, answer } = props;
+
+  function displayOptions(type: number, options: string[]) {
+    return type === 0 ? (
+      <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Your Answer"
+          aria-label="user-answer"
+          aria-describedby="basic-addon1"
+        />
+      </InputGroup>
+    ) : (
+      options.map((option: string, index: number) => {
+        // TODO: map to multiple choice inputs
+        return (
+          <div className="border" key={index}>
+            {option}
+          </div>
+        );
+      })
+    );
+  }
+
   return (
     <Container>
-      <Stack gap={5}>
-        <p>
-          Which iconic Taylor Swift album, released in 2014, features hit songs
-          like 'Shake It Off' and 'Blank Space'?
-        </p>
-        <InputGroup className="mb-3">
-          <Form.Control
-            placeholder="Your Answer"
-            aria-label="user-answer"
-            aria-describedby="basic-addon1"
-          />
-        </InputGroup>
-        {/* <Button onClick={handleRedirect}>Next</Button> */}
-      </Stack>
+      <p className="border">{question}</p>
+      {displayOptions(type, options)}
     </Container>
   );
 }

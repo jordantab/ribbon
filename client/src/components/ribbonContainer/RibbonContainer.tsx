@@ -8,15 +8,16 @@ import PhotoAlbum from '../photoAlbum/PhotoAlbum';
 function RibbonContainer() {
   const tempRibbon = {
     title: 'Taylor Swift',
-    type: 1, // going to use enum in the backend, 0 for short answer and 1 for multiple choice
     photos: ['photo1', 'photo2', 'photo3'],
     riddles: [
       {
+        type: 1, // going to use enum in the backend, 0 for short answer and 1 for multiple choice
         question: 'What is her name?',
         options: ['Taylor', 'Alex', 'Jordan', 'Kevin'],
         answer: 'Taylor',
       },
       {
+        type: 1, // going to use enum in the backend, 0 for short answer and 1 for multiple choice
         question: 'What is her last name?',
         options: ['Swift', 'Daddabbo', 'Tab', 'James'],
         answer: 'Swift',
@@ -24,10 +25,10 @@ function RibbonContainer() {
     ],
     gift: 'Gift',
     currentStage: 0, //enum on the backend, 0 for photos, 1 for riddle, 2 for gift
-    currentRiddle: 0,
   };
+
   const [currentStage, setCurrentStage] = useState(0);
-  const [currentRiddle, setCurrentRiddle] = useState(0);
+  const [currentRiddleIndex, setcurrentRiddleIndex] = useState(0);
   const [ribbonData, setRibbonData] = useState(tempRibbon);
 
   function goToNextStage() {
@@ -38,11 +39,29 @@ function RibbonContainer() {
 
   function goToPreviousStage() {}
 
+  function displayCurrentRiddle(): JSX.Element {
+    const currentRiddle = ribbonData.riddles[currentRiddleIndex];
+    return (
+      // TODO: conditionally pass in the next function
+      <RiddleContainer
+        title={ribbonData.title}
+        riddle={currentRiddle}
+        goToNextRiddle={goToNextRiddle}
+        goToNextStage={goToNextStage}
+      />
+    );
+  }
+
   function goToNextRiddle() {
-    if (currentRiddle + 1 < ribbonData.riddles.length - 1) {
-      setCurrentRiddle(currentRiddle + 1);
+    // TODO: add answer validation
+    if (currentRiddleIndex < ribbonData.riddles.length - 1) {
+      setcurrentRiddleIndex(currentRiddleIndex + 1);
+      console.log('setting new currentRiddleIndex');
+    } else {
+      console.log('moving to gift section');
     }
   }
+
   function goToPreviousRiddle() {}
 
   function renderCurrentStage() {
@@ -56,7 +75,7 @@ function RibbonContainer() {
           />
         );
       case 1:
-        return <RiddleContainer />;
+        return displayCurrentRiddle();
       case 2:
       // return <Gift gift={ribbonData.gift} />;
       default:
