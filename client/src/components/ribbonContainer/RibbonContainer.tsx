@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import RiddleContainer from '../riddleContainer/RiddleContainer';
 import PhotoAlbum from '../photoAlbum/PhotoAlbum';
+import Gift from '../gift/Gift';
 
 // TODO: fetch Ribbon object
 
@@ -76,7 +77,7 @@ function RibbonContainer() {
       case 1:
         return displayCurrentRiddle();
       case 2:
-        return <div>{ribbonData.gift}</div>;
+        return <Gift gift={ribbonData.gift} />;
       default:
         return <div>Loading...</div>;
     }
