@@ -35,7 +35,9 @@ function RiddleContainer(props: RiddleProps) {
         options={riddle.options}
         setUserInput={setUserInput}
       />
-      <Button onClick={validateUserInput}>Next</Button>
+      <Button onClick={validateUserInput} className="w-100">
+        Next
+      </Button>
     </Container>
   );
 }
