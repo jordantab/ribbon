@@ -13,13 +13,16 @@ type RiddleProps = {
     answer: string; //TODO: determine correct type
   };
   goToNextRiddle: () => void;
-  goToNextStage: () => void;
 };
 
 function RiddleContainer(props: RiddleProps) {
   const [userInput, setUserInput] = useState(null);
-  const { title, riddle, goToNextRiddle, goToNextStage } = props;
+  const { title, riddle, goToNextRiddle } = props;
 
+  // TODO: function to validate user input
+  function checkUserInput() {}
+
+  // TODO: logic to call this function also update function to be conditional
   function goToNextPage(
     goToNextRiddle: () => void,
     goToNextStage: () => void

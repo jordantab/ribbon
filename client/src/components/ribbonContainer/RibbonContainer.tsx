@@ -48,7 +48,6 @@ function RibbonContainer() {
         title={ribbonData.title}
         riddle={currentRiddle}
         goToNextRiddle={goToNextRiddle}
-        goToNextStage={goToNextStage}
       />
     );
   }
