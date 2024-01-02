@@ -54,11 +54,9 @@ function RibbonContainer() {
 
   function goToNextRiddle() {
     // TODO: add answer validation
-    if (currentRiddleIndex < ribbonData.riddles.length - 1) {
-      setcurrentRiddleIndex(currentRiddleIndex + 1);
-    } else {
-      setCurrentStage(currentStage + 1);
-    }
+    currentRiddleIndex < ribbonData.riddles.length - 1
+      ? setcurrentRiddleIndex(currentRiddleIndex + 1)
+      : setCurrentStage(currentStage + 1);
   }
 
   function goToPreviousRiddle() {}

@@ -16,17 +16,15 @@ type RiddleProps = {
 };
 
 function RiddleContainer(props: RiddleProps) {
-  const [userInput, setUserInput] = useState(null);
+  const [userInput, setUserInput] = useState('');
   const { title, riddle, goToNextRiddle } = props;
 
-  // TODO: function to validate user input
-  function checkUserInput() {}
-
-  // TODO: logic to call this function also update function to be conditional
-  function goToNextPage(
-    goToNextRiddle: () => void,
-    goToNextStage: () => void
-  ) {}
+  function validateUserInput() {
+    userInput === riddle.answer
+      ? goToNextRiddle()
+      : // TODO: change this to an alert to the user
+        console.log('incorrect answer');
+  }
 
   return (
     <Container>
@@ -35,10 +33,9 @@ function RiddleContainer(props: RiddleProps) {
         type={riddle.type}
         question={riddle.question}
         options={riddle.options}
-        answer={riddle.answer}
         setUserInput={setUserInput}
       />
-      <Button onClick={goToNextRiddle}>Next</Button>
+      <Button onClick={validateUserInput}>Next</Button>
     </Container>
   );
 }
